@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Budget</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    background:#e0f7fa;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+#app{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+    width:300px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    text-align:center;
+}
+
+#bal{
+    color:#0066ff;
+}
+
+input{
+    width:90%;
+    padding:8px;
+    margin:6px 0;
+    border:1px solid #ccc;
+    border-radius:6px;
+}
+
+button{
+    width:95%;
+    padding:10px;
+    background:#0066ff;
+    color:white;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0052cc;
+}
+
+ul{
+    list-style:none;
+    padding:0;
+}
+
+li{
+    background:#f1f1f1;
+    margin-top:5px;
+    padding:8px;
+    border-radius:6px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="app">
+<h2> My Budget</h2>
+<h1 id="bal">0</h1>
+
+<input type="text" id="desc" placeholder="Item">
+<input type="number" id="amt" placeholder="Amount">
+
+<button onclick="add()">Add</button>
+
+<ul id="list"></ul>
+</div>
+
+<script>
+
+let total = 0;
+
+const b = document.getElementById("bal");
+const d = document.getElementById("desc");
+const a = document.getElementById("amt");
+const l = document.getElementById("list");
+
+function add(){
+
+let name = d.value;
+let value = parseFloat(a.value);
+
+if(name && value){
+
+total += value;
+b.innerText = total;
+
+let li = document.createElement("li");
+li.innerText = name + " : " + value;
+
+l.appendChild(li);
+
+d.value="";
+a.value="";
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
